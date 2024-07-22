@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-
+import Image from "next/image";
 export const metadata: Metadata = {
   title: "About Agricultural Flexible Payment Application | AgriFlexPay",
   description: "Learn about AgriFlexPay and our mission to revolutionize agricultural payments.",
@@ -23,7 +23,9 @@ const AboutPage = () => {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div className="flex items-center justify-center">
-                <img
+                <Image
+                  width={500}
+                  height={500}
                   src="/images/hero/group.jpg"
                   alt="AgriFlexPay Farmers"
                   className="rounded-lg shadow-lg fluid md:h-96"
@@ -62,7 +64,9 @@ const AboutPage = () => {
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               <div className="flex flex-col items-center">
-                <img
+                <Image
+                  width={500}
+                  height={500}
                   src="/images/hero/team.jpeg"
                   alt="Team Member"
                   className="rounded-full w-32 h-32 object-cover shadow-lg mb-4"
@@ -75,7 +79,9 @@ const AboutPage = () => {
                 </p>
               </div>
               <div className="flex flex-col items-center">
-                <img
+                <Image
+                  width={500}
+                  height={500}
                   src="/images/hero/team.jpeg"
                   alt="Team Member"
                   className="rounded-full w-32 h-32 object-cover shadow-lg mb-4"
@@ -88,10 +94,12 @@ const AboutPage = () => {
                 </p>
               </div>
               <div className="flex flex-col items-center">
-                <img
+                <Image
+                  width={500}
+                  height={500}
                   src="/images/hero/team.jpeg"
                   alt="Team Member"
-                  className="rounded-full w-32 h-32 object-cover shadow-lg mb-4"
+                  className="rounded-full w-32 h-32 object-cover shadow-lg mb-4 fluid"
                 />
                 <h4 className="text-xl font-bold text-black dark:text-white mb-2">
                   Michael Johnson

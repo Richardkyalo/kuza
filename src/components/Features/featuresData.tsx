@@ -1,10 +1,10 @@
 import { Feature } from "@/types/feature";
-
+import Image from "next/image";
 const featuresData: Feature[] = [
   {
     id: 1,
     icon: (
-      <img src="/images/hero/hero1.jpg" alt="Project 1" className="fluid" />
+      <Image src="/images/hero/hero1.jpg" alt="Project 1" className="fluid" width={500} height={500} />
 
     ),
     title: "Seeds And Seedlings",
@@ -14,7 +14,7 @@ const featuresData: Feature[] = [
   {
     id: 1,
     icon: (
-      <img src="/images/hero/kukuplan.jpg" alt="Project 1" className="fluid" />
+      <Image src="/images/hero/kukuplan.jpg" alt="Project 1" className="fluid" width={500} height={400} />
 
     ),
     title: "KukuPlan",
@@ -24,8 +24,7 @@ const featuresData: Feature[] = [
   {
     id: 1,
     icon: (
-      <img src="/images/hero/hero2.jpg" alt="Project 1" className="fluid" />
-
+      <Image src="/images/hero/hero2.jpg" alt="Project 1" className="fluid" width={500} height={400} />
     ),
     title: "Kitchen Farm",
     paragraph:
@@ -34,7 +33,7 @@ const featuresData: Feature[] = [
   {
     id: 1,
     icon: (
-      <img src="/images/hero/kukuplan.jpg" alt="Project 1" className="fluid" />
+      <Image src="/images/hero/kukuplan.jpg" alt="Project 1" className="fluid" width={500} height={400} />
 
     ),
     title: "Kukuplan",
@@ -44,7 +43,7 @@ const featuresData: Feature[] = [
   {
     id: 1,
     icon: (
-      <img src="/images/hero/hero2.jpg" alt="Project 1" className="fluid" />
+      <Image src="/images/hero/hero2.jpg" alt="Project 1" className="fluid" width={500} height={400}/>
 
     ),
     title: "Kitchen Farm",
@@ -54,7 +53,7 @@ const featuresData: Feature[] = [
   {
     id: 1,
     icon: (
-      <img src="/images/hero/hero1.jpg" alt="Project 1" className="fluid" />
+      <Image src="/images/hero/hero1.jpg" alt="Project 1" className="fluid" width={500} height={400} />
 
     ),
     title: "Seeds And Seedlings",
