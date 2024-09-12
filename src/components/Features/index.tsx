@@ -1,23 +1,17 @@
 import SectionTitle from "../Common/SectionTitle";
+import Portfolio from "../portfolio";
 import SingleFeature from "./SingleFeature";
 import featuresData from "./featuresData";
+import TeamsSection from "./teams";
 
 const Features = () => {
   return (
     <>
-      <section id="features" className="py-16 md:py-20 lg:py-28">
+      <section id="features" className=" ">
         <div className="container">
-          <SectionTitle
-            title="Our Projects"
-            paragraph="Explore a variety of agricultural projects designed to boost your farming potential. From sustainable farming techniques to modern equipment and advanced seeds, our platform provides access to essential resources with flexible payment options. Empowering farmers to grow and succeed, one project at a time."
-            center
-          />
+          <TeamsSection/>
 
-          <div className="grid grid-cols-1 gap-x-8 gap-y-14 md:grid-cols-2 lg:grid-cols-3">
-            {featuresData.map((feature) => (
-              <SingleFeature key={feature.id} feature={feature} />
-            ))}
-          </div>
+          <Portfolio/>
         </div>
       </section>
     </>

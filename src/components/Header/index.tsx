@@ -43,12 +43,12 @@ const Header = () => {
       <header
         className={`header left-0 top-0 z-40 flex w-full items-center ${
           sticky
-            ? "fixed z-[9999] bg-white !bg-opacity-80 shadow-sticky backdrop-blur-sm transition dark:bg-gray-dark dark:shadow-sticky-dark"
-            : "absolute bg-transparent"
+            ? "fixed z-[9999] bg-white shadow-sticky backdrop-blur-sm transition dark:bg-gray-dark dark:shadow-sticky-dark"
+            : "absolute"
         }`}
       >
         <div className="container">
-          <div className="relative -mx-4 flex items-center justify-between">
+          <div className="relative -mx-4 flex items-center justify-center">
             <div className="w-60 max-w-full px-4 xl:mr-12">
               <Link
                 href="/"
@@ -56,10 +56,10 @@ const Header = () => {
                   sticky ? "py-5 lg:py-2" : "py-8"
                 } `}
               >
-                <h2 className="font-bold ">AgriFlexPay</h2>
+                <h2 className="font-bold text-blue-500">Kuza Talanta Mtaani</h2>
               </Link>
             </div>
-            <div className="flex w-full items-center justify-between px-4">
+            <div className="flex w-full items-center justify-end px-4">
               <div>
                 <button
                   onClick={navbarToggleHandler}
@@ -99,8 +99,8 @@ const Header = () => {
                             href={menuItem.path}
                             className={`flex py-2 text-base lg:mr-0 lg:inline-flex lg:px-0 lg:py-6 ${
                               usePathName === menuItem.path
-                                ? "text-darkS dark:text-white"
-                                : "text-dark hover:text-green-500 dark:text-white/70 dark:hover:text-white"
+                                ? "text-blue-500 dark:text-white"
+                                : "text-blue-500 hover:text-white dark:text-white/70 dark:hover:text-white"
                             }`}
                           >
                             {menuItem.title}
@@ -145,7 +145,7 @@ const Header = () => {
                   </ul>
                 </nav>
               </div>
-              <div className="flex items-center justify-end pr-16 lg:pr-0">
+              {/* <div className="flex items-center justify-end pr-16 lg:pr-0">
                 <Link
                   href="/signin"
                   className="hidden px-7 py-3 text-base font-medium text-dark  hover:opacity-70 dark:text-white md:block"
@@ -158,9 +158,9 @@ const Header = () => {
                   Sign Up
                 </Link>
                 <div>
-                  <ThemeToggler />
+                   <ThemeToggler /> 
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
