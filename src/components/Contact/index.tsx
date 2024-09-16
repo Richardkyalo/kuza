@@ -114,8 +114,8 @@ const Contact = () => {
                       onBlur={(e) => setData({ ...data, playersNumber: +e.target.value })}
                       className="w-full border border-gray-300 rounded-md p-3 text-base text-gray-700 focus:ring-blue-500 focus:border-blue-500"
                     />
-                  {/* </div>
-                  <div className="mb-6">
+                  </div>
+                  {/* <div className="mb-6">
                     <label htmlFor="address" className="block text-sm font-medium text-gray-700 mb-2">
                       Address
                     </label>
