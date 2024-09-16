@@ -14,11 +14,11 @@ const AboutPage = () => {
         id="about"
         className="relative py-16 md:py-20 lg:py-28 bg-cover bg-center bg-no-repeat"
         style={{
-          backgroundImage: "url('/images/kuza1.jpg')",
+          backgroundImage: "url('/images/kuza44.jpg')",
           backgroundSize: "cover"
         }}
       >
-        <div className="absolute inset-0 bg-black/50"></div>
+        <div className="absolute inset-0 bg-black opacity-70"></div>
         <div className="relative container mt-16 mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 animate-fadeInUp">
