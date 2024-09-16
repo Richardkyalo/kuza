@@ -2,16 +2,37 @@
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import ThemeToggler from "./ThemeToggler";
 import menuData from "./menuData";
 
 const Header = () => {
   // Navbar toggle
   const [navbarOpen, setNavbarOpen] = useState(false);
+  const navbarRef = useRef(null);
+  const toggleButtonRef = useRef(null);
+
   const navbarToggleHandler = () => {
     setNavbarOpen(!navbarOpen);
   };
+
+  // Handle click outside to close navbar
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (
+        navbarRef.current &&
+        !navbarRef.current.contains(event.target) &&
+        !toggleButtonRef.current.contains(event.target)
+      ) {
+        setNavbarOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   // Sticky Navbar
   const [sticky, setSticky] = useState(false);
@@ -24,9 +45,12 @@ const Header = () => {
   };
   useEffect(() => {
     window.addEventListener("scroll", handleStickyNavbar);
-  });
+    return () => {
+      window.removeEventListener("scroll", handleStickyNavbar);
+    };
+  }, []);
 
-  // submenu handler
+  // Submenu handler
   const [openIndex, setOpenIndex] = useState(-1);
   const handleSubmenu = (index) => {
     if (openIndex === index) {
@@ -63,6 +87,7 @@ const Header = () => {
               <div>
                 <button
                   onClick={navbarToggleHandler}
+                  ref={toggleButtonRef}
                   id="navbarToggler"
                   aria-label="Mobile Menu"
                   className="absolute right-4 top-1/2 block translate-y-[-50%] rounded-lg px-3 py-[6px] ring-primary focus:ring-2 lg:hidden"
@@ -84,6 +109,7 @@ const Header = () => {
                   />
                 </button>
                 <nav
+                  ref={navbarRef}
                   id="navbarCollapse"
                   className={`navbar absolute right-0 z-30 w-[250px] rounded border-[.5px] border-body-color/50 bg-white px-6 py-4 duration-300 dark:border-body-color/20 dark:bg-dark lg:visible lg:static lg:w-auto lg:border-none lg:!bg-transparent lg:p-0 lg:opacity-100 ${
                     navbarOpen
@@ -100,7 +126,7 @@ const Header = () => {
                             className={`flex py-2 text-base lg:mr-0 lg:inline-flex lg:px-0 lg:py-6 ${
                               usePathName === menuItem.path
                                 ? "text-blue-500 dark:text-white"
-                                : "text-blue-500 hover:text-white dark:text-white/70 dark:hover:text-white"
+                                : "text-blue-500 hover:text-green-500 dark:text-white/70 dark:hover:text-white"
                             }`}
                           >
                             {menuItem.title}
