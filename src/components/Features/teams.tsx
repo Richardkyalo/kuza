@@ -1,11 +1,7 @@
 "use client";
 import Image from 'next/image';
 import SectionTitle from '../Common/SectionTitle';
-import { Swiper, SwiperSlide } from 'swiper/react';
-// import Swiper from 'swiper';
-// import Swiper styles
-import 'swiper/css';
-// import 'swiper/swiper.min.css.'; // Import Swiper styles
+import { useRef } from 'react';
 
 const teams = [
   {
@@ -27,18 +23,25 @@ const teams = [
     colors: '#1E88E5',
   },
   {
-  name: 'Team C',
-  logo: '/images/teamC.jpeg',
-  description: 'A versatile team known for their strategic play.',
-  colors: '#1E88E5',
-},{
-    name: 'Team C',
-    logo: '/images/teamC.jpeg',
+    name: 'Team A',
+    logo: '/images/teamA.jpeg',
+    description: 'A dynamic team with a strong track record.',
+    colors: '#F9A825',
+  },
+  {
+    name: 'Team B',
+    logo: '/images/teamB.jpeg',
     description: 'A versatile team known for their strategic play.',
     colors: '#1E88E5',
-  },{
-    name: 'Team C',
-    logo: '/images/teamC.jpeg',
+  }, {
+    name: 'Team A',
+    logo: '/images/teamA.jpeg',
+    description: 'A dynamic team with a strong track record.',
+    colors: '#F9A825',
+  },
+  {
+    name: 'Team B',
+    logo: '/images/teamB.jpeg',
     description: 'A versatile team known for their strategic play.',
     colors: '#1E88E5',
   },
@@ -67,6 +70,17 @@ const TeamCard = ({ team }) => (
 );
 
 const TeamsSection = () => {
+  const scrollRef = useRef(null);
+
+  const scroll = (direction) => {
+    if (scrollRef.current) {
+      scrollRef.current.scrollBy({
+        left: direction === 'left' ? -300 : 300,
+        behavior: 'smooth',
+      });
+    }
+  };
+
   return (
     <section className="py-16 bg-gray-100 dark:bg-gray-800">
       <SectionTitle
@@ -74,31 +88,27 @@ const TeamsSection = () => {
         paragraph="Discover the exciting teams competing in this tournament. Each team brings its unique flair and skill to the field."
         center
       />
-      <div className="container mx-auto px-4">
-        <Swiper
-          spaceBetween={20} // Space between slides
-          slidesPerView={'auto'} // Number of slides visible at once
-          loop={true} // Infinite loop mode
-          pagination={{ clickable: true }} // Pagination controls
-          navigation // Navigation arrows
-          breakpoints={{
-            640: {
-              slidesPerView: 1,
-            },
-            768: {
-              slidesPerView: 2,
-            },
-            1024: {
-              slidesPerView: 3,
-            },
-          }}
+      <div className="container mx-auto px-4 relative">
+        <button
+          onClick={() => scroll('left')}
+          className="absolute top-1/2 left-0 transform -translate-y-1/2 text-black p-2 rounded-r-lg shadow-lg z-10"
+        >
+          &lt;
+        </button>
+        <div
+          ref={scrollRef}
+          className="flex overflow-x-auto no-scrollbar py-4 scroll-smooth"
         >
           {teams.map((team, index) => (
-            <SwiperSlide key={index}>
-              <TeamCard team={team} />
-            </SwiperSlide>
+            <TeamCard key={index} team={team} />
           ))}
-        </Swiper>
+        </div>
+        <button
+          onClick={() => scroll('right')}
+          className="absolute top-1/2 right-0 transform -translate-y-1/2 text-black p-2 rounded-l-lg shadow-lg z-10"
+        >
+          &gt;
+        </button>
       </div>
     </section>
   );
