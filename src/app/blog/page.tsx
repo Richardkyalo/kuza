@@ -1,94 +1,52 @@
-import SingleBlog from "@/components/Blog/SingleBlog";
-import blogData from "@/components/Blog/blogData";
+'use client' 
 import Breadcrumb from "@/components/Common/Breadcrumb";
+import LiveScoreCard from "@/components/LiveScore/LIveScoreCard"// Custom component to show live match scores
+import { useEffect, useState } from "react";
+// import io from "socket.io-client"; // Assuming WebSocket for live scores
 
-import { Metadata } from "next";
+// export const metadata = {
+//   title: "Live Football Scores | Tournament Tracker",
+//   description: "Track live football scores in real-time during the tournament",
+// };
 
-export const metadata: Metadata = {
-  title: "Blog Page | Free Next.js Template for Startup and SaaS",
-  description: "This is Blog Page for Startup Nextjs Template",
-  // other metadata
-};
+const LiveScores = () => {
+  const [scores, setScores] = useState([]);
 
-const Blog = () => {
+  // useEffect(() => {
+  //   // Set up WebSocket connection for real-time scores
+  //   const socket = io("https://your-socket-server.com");
+
+  //   socket.on("scoreUpdate", (updatedScores) => {
+  //     setScores(updatedScores);
+  //   });
+
+  //   return () => {
+  //     socket.disconnect();
+  //   };
+  // }, []);
+
   return (
     <>
       <Breadcrumb
-        pageName="Blog Grid"
-        description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. In varius eros eget sapien consectetur ultrices. Ut quis dapibus libero."
+        pageName="Live Scores"
+        description="Follow live updates of ongoing matches in the tournament."
       />
 
-      <section className="pb-[120px] pt-[120px]">
+      <section className="pb-[120px] pt-[120px] bg-green-100">
         <div className="container">
           <div className="-mx-4 flex flex-wrap justify-center">
-            {blogData.map((blog) => (
-              <div
-                key={blog.id}
-                className="w-full px-4 md:w-2/3 lg:w-1/2 xl:w-1/3"
-              >
-                <SingleBlog blog={blog} />
-              </div>
-            ))}
-          </div>
-
-          <div className="-mx-4 flex flex-wrap" data-wow-delay=".15s">
-            <div className="w-full px-4">
-              <ul className="flex items-center justify-center pt-8">
-                <li className="mx-1">
-                  <a
-                    href="#0"
-                    className="flex h-9 min-w-[36px] items-center justify-center rounded-md bg-body-color bg-opacity-[15%] px-4 text-sm text-body-color transition hover:bg-primary hover:bg-opacity-100 hover:text-white"
-                  >
-                    Prev
-                  </a>
-                </li>
-                <li className="mx-1">
-                  <a
-                    href="#0"
-                    className="flex h-9 min-w-[36px] items-center justify-center rounded-md bg-body-color bg-opacity-[15%] px-4 text-sm text-body-color transition hover:bg-primary hover:bg-opacity-100 hover:text-white"
-                  >
-                    1
-                  </a>
-                </li>
-                <li className="mx-1">
-                  <a
-                    href="#0"
-                    className="flex h-9 min-w-[36px] items-center justify-center rounded-md bg-body-color bg-opacity-[15%] px-4 text-sm text-body-color transition hover:bg-primary hover:bg-opacity-100 hover:text-white"
-                  >
-                    2
-                  </a>
-                </li>
-                <li className="mx-1">
-                  <a
-                    href="#0"
-                    className="flex h-9 min-w-[36px] items-center justify-center rounded-md bg-body-color bg-opacity-[15%] px-4 text-sm text-body-color transition hover:bg-primary hover:bg-opacity-100 hover:text-white"
-                  >
-                    3
-                  </a>
-                </li>
-                <li className="mx-1">
-                  <span className="flex h-9 min-w-[36px] cursor-not-allowed items-center justify-center rounded-md bg-body-color bg-opacity-[15%] px-4 text-sm text-body-color">
-                    ...
-                  </span>
-                </li>
-                <li className="mx-1">
-                  <a
-                    href="#0"
-                    className="flex h-9 min-w-[36px] items-center justify-center rounded-md bg-body-color bg-opacity-[15%] px-4 text-sm text-body-color transition hover:bg-primary hover:bg-opacity-100 hover:text-white"
-                  >
-                    12
-                  </a>
-                </li>
-                <li className="mx-1">
-                  <a
-                    href="#0"
-                    className="flex h-9 min-w-[36px] items-center justify-center rounded-md bg-body-color bg-opacity-[15%] px-4 text-sm text-body-color transition hover:bg-primary hover:bg-opacity-100 hover:text-white"
-                  >
-                    Next
-                  </a>
-                </li>
-              </ul>
-            </div>
+            {scores.length > 0 ? (
+              scores.map((match) => (
+                <div
+                  key={match.id}
+                  className="w-full px-4 md:w-2/3 lg:w-1/2 xl:w-1/3 mb-6"
+                >
+                  <LiveScoreCard match={match} />
+                </div>
+              ))
+            ) : (
+              <p>No live matches at the moment.</p>
+            )}
           </div>
         </div>
       </section>
@@ -96,4 +54,4 @@ const Blog = () => {
   );
 };
 
-export default Blog;
+export default LiveScores;
